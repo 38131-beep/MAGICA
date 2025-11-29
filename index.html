@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitor de Mente</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin:0;
+        padding:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+    .container{
+        background:white;
+        padding:30px;
+        border-radius:10px;
+        box-shadow:0 0 15px rgba(0,0,0,0.2);
+        text-align:center;
+        width:350px;
+    }
+    #carregando{
+        display:none;
+        font-size:20px;
+        font-weight:bold;
+        margin-top:15px;
+    }
+    #resultado{
+        display:none;
+        font-size:22px;
+        font-weight:bold;
+        color:#0077ff;
+        margin-top:20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Escolha um número de 1 a 100</h2>
+
+    <input type="number" id="numero" min="1" max="100" style="padding:8px; width:120px; font-size:16px;">
+    <br><br>
+    <button onclick="iniciar()" style="padding:10px 20px; font-size:16px; cursor:pointer;">Enviar</button>
+
+    <div id="carregando">🔮 Lendo sua mente...</div>
+    <div id="resultado"></div>
+</div>
+
+<script>
+function iniciar(){
+    let n = document.getElementById("numero").value;
+
+    if(n < 1 || n > 100 || n === ""){
+        alert("Digite um número válido entre 1 e 100!");
+        return;
+    }
+
+    document.getElementById("carregando").style.display = "block";
+    document.getElementById("resultado").style.display = "none";
+
+    setTimeout(() => {
+        document.getElementById("carregando").style.display = "none";
+        document.getElementById("resultado").style.display = "block";
+        document.getElementById("resultado").innerHTML = `✨ Este foi seu número: <strong>${n}</strong>`;
+    }, 10000);
+}
+</script>
+
+</body>
+</html>
